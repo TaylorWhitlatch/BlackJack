@@ -9,6 +9,7 @@ $(document).ready(function(){
 	// 	Push card onto players array
 	// $(".card").hide()
 	$('#message').hide()
+	
 	var ifThereIsAnAce = false;
 	var playersHand = [];
 	var dealersHand = [];
@@ -156,7 +157,7 @@ $(document).ready(function(){
 		$(classSelector).html(handTotal);
 		if(handTotal > 21){
 			$('#message').show();
-			
+
 		}
 		console.log(handTotal)
 		return handTotal;
