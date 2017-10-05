@@ -1,3 +1,63 @@
 body {
-	background-color: blue;
+	background-color: slategray;
+
+}
+.big-table {
+	perspective:  600px;
+}
+
+
+
+.the-table{
+	background-color: #277714;
+	border: 5px solid #dcdcdc;
+	border-radius: 10px 10px 100px 100px;
+	margin-top: 50px;
+	padding: 30px 0px;
+	position: relative;
+	box-shadow: 10px 10px 10px 10px;
+
+
+height: 500px;
+  transform: rotateX(45deg);
+
+}
+
+.card{
+	height: 120px;
+	background-color: #fff;
+	/* padding: 10px; */
+	/* border: 2px solid #277714; */
+	
+
+}
+
+.card img{
+	max-height: 120px;
+	width: auto;
+		
+}
+
+.card-back {
+	height: 120px;
+}
+
+.card-back img {
+	height: 120px;
+
+}
+.dealerPosition {
+	display: inline-block;
+	position: relative;
+
+}
+
+#message {
+	display: inline-block;
+	position: absolute;
+		
+}
+#card {
+	display: inline-block;
+	position: absolute;
 }
