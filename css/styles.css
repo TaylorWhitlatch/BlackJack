@@ -60,6 +60,7 @@ height: 500px;
 	position: absolute;
 	text-align: center;
 	font-size: 72px;
+	color: white;
 		
 }
 #card {
@@ -77,3 +78,35 @@ height: 500px;
 .bet {
 	color: white;
 }
+
+.dealer-total {
+	color: white;
+}
+
+.player-total {
+	color:  white;
+}
+
+.bet-button {
+	background: transparent;
+	border: 0px;
+	width: 96px;
+	height: 96px;
+	display: inline-block;
+	margin: -90px;
+	margin-left: -40px;
+	color: white;
+background-image: url("./images/cards/chip.png")
+}
+
+.bet-button img {
+	width: 96px;
+	height: 96px;
+	position: relative;
+	display: inline-block;
+	border: 0px;
+	text-align: center;
+	border:  none;
+	color: white;
+}
+

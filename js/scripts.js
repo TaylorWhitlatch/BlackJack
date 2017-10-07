@@ -27,6 +27,7 @@ $(document).ready(function(){
       $(`.card-${i}`).html('');
       $("#card2").html(`<img src="./images/cardBack.png">`)
     }}
+    betting = false;
 
 
 	function showBet(){
@@ -135,17 +136,8 @@ function showTotal(){
 		
 		var playerTotal = calculateTotal(playersHand,'player');
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
-		if(playerTotal == 21){
-			$('#message').html('BLACKJACK')
-			totalAmount= totalAmount + (betAmount *3)
-			$('#message').show();
-			showBet()
-			showTotal()
-			clearCards()
-			betAmount = 0
-			betting = false;
-
-		}
+		
+		
 
 		if(playerTotal > dealersTotal){
 			$('#message').html('Winner')
@@ -155,6 +147,7 @@ function showTotal(){
 			showTotal()
 			betAmount = 0
 			betting = false;
+			showBet()
 
 
 		}else if(dealersTotal >21){
@@ -165,6 +158,7 @@ function showTotal(){
 			showTotal()
 			betAmount = 0
 			betting = false;
+			showBet()
 
 
 		}
@@ -186,9 +180,10 @@ function showTotal(){
 			$('#message').html('Push')
 			$('#message').show();
 			totalAmount = totalAmount + betAmount
-			showBet ()
+			
 			showTotal()
-
+			betAmount =0
+			showBet ()
 		}
 
 
@@ -225,8 +220,22 @@ function showTotal(){
 				thisCardsValue = 11
 				ifThereIsAnAce = true
 			}
-			else {
+			else if(handTotal.length ==2 && handTotal == 21){
+			$('#message').html('BLACKJACK')
+			totalAmount= totalAmount + (betAmount *3)
+			$('#message').show();
+			showBet()
+			showTotal()
+			clearCards()
+			betAmount = 0
+			betting = false;
+			showBet()
 
+
+			}
+
+			else {
+				
 			}
 			
 
