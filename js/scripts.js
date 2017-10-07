@@ -8,18 +8,27 @@ $(document).ready(function(){
 	// 	Place card function
 	// 	Push card onto players array
 	// $(".card").hide()
+	
 	$('#message').hide()
 	var betAmount = 0
 	var totalAmount = 100
 	var ifThereIsAnAce = false;
 	var playersHand = [];
 	var dealersHand = [];
+	var betting = false;
 	// freshDeck is the return value of the function createDeck
 	const freshDeck = createDeck();
 	console.log(freshDeck);
 	// Make a FULL copy of teh freshDeck with slice, don't point at it.
 	var theDeck = freshDeck.slice();
 	// shuffleDeck();
+	 function clearCards (){
+	 for (let i = 2; i < 7; i++) {
+      $(`.card-${i}`).html('');
+      $("#card2").html(`<img src="./images/cardBack.png">`)
+    }}
+
+
 	function showBet(){
 	$("#bet-amount").html(`${betAmount}`)
 }
@@ -29,10 +38,11 @@ function showTotal(){
 
 	$('.deal-button').click(()=>{
 		// We will create and shuffle a new deck
+		if(betting ==true){
 		theDeck = freshDeck.slice();
 		theDeck = shuffleDeck(theDeck);
-				
-
+		clearCards()		
+		$('#message').hide();
 		playersHand = [];
 		dealersHand = [];
 		// console.log(theDeck);
@@ -76,7 +86,7 @@ function showTotal(){
 		calculateTotal(playersHand,'player')
 		calculateTotal(dealersHand,'dealer')
 
-	})
+	}})
 
 	$('.hit-button').click(()=>{
 		// Hit functionallity...
@@ -117,6 +127,7 @@ function showTotal(){
 		totalAmount -=1;
 		showBet()
 		showTotal()
+		betting = true;
 
 	})
 
@@ -124,12 +135,16 @@ function showTotal(){
 		
 		var playerTotal = calculateTotal(playersHand,'player');
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
-		if(playerTotal ==21){
+		if(playerTotal == 21){
 			$('#message').html('BLACKJACK')
-			totalAmount= totalAmount + (betAmount *2) + (betAmount * .5)
+			totalAmount= totalAmount + (betAmount *3)
 			$('#message').show();
 			showBet()
 			showTotal()
+			clearCards()
+			betAmount = 0
+			betting = false;
+
 		}
 
 		if(playerTotal > dealersTotal){
@@ -138,6 +153,8 @@ function showTotal(){
 			$('#message').show();
 			showBet()
 			showTotal()
+			betAmount = 0
+			betting = false;
 
 
 		}else if(dealersTotal >21){
@@ -146,6 +163,8 @@ function showTotal(){
 			totalAmount = totalAmount + (betAmount * 2)
 			showBet()
 			showTotal()
+			betAmount = 0
+			betting = false;
 
 
 		}
@@ -154,7 +173,9 @@ function showTotal(){
 			$('#message').show();
 			showBet()
 			showTotal()
-
+			betAmount = 0
+			showBet()
+			betting = false;	
 			
 
 		} 
