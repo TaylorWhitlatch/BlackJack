@@ -9,7 +9,8 @@ $(document).ready(function(){
 	// 	Push card onto players array
 	// $(".card").hide()
 	$('#message').hide()
-	
+	var betAmount = 0
+	var totalAmount = 100
 	var ifThereIsAnAce = false;
 	var playersHand = [];
 	var dealersHand = [];
@@ -19,11 +20,19 @@ $(document).ready(function(){
 	// Make a FULL copy of teh freshDeck with slice, don't point at it.
 	var theDeck = freshDeck.slice();
 	// shuffleDeck();
+	function showBet(){
+	$("#bet-amount").html(`${betAmount}`)
+}
+function showTotal(){
+	$("#total-amount").html(`${totalAmount}`)
+}
 
 	$('.deal-button').click(()=>{
 		// We will create and shuffle a new deck
 		theDeck = freshDeck.slice();
 		theDeck = shuffleDeck(theDeck);
+				
+
 		playersHand = [];
 		dealersHand = [];
 		// console.log(theDeck);
@@ -103,10 +112,64 @@ $(document).ready(function(){
 		checkWin();
 	})
 
+	$(".bet-button").click(()=>{
+		betAmount += 1;
+		totalAmount -=1;
+		showBet()
+		showTotal()
+
+	})
+
 	function checkWin(){
 		
 		var playerTotal = calculateTotal(playersHand,'player');
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
+		if(playerTotal ==21){
+			$('#message').html('BLACKJACK')
+			totalAmount= totalAmount + (betAmount *2) + (betAmount * .5)
+			$('#message').show();
+			showBet()
+			showTotal()
+		}
+
+		if(playerTotal > dealersTotal){
+			$('#message').html('Winner')
+			totalAmount= totalAmount + (betAmount *2)
+			$('#message').show();
+			showBet()
+			showTotal()
+
+
+		}else if(dealersTotal >21){
+			$('#message').html(`Winner`)
+			$('#message').show();
+			totalAmount = totalAmount + (betAmount * 2)
+			showBet()
+			showTotal()
+
+
+		}
+		else if(playerTotal < dealersTotal){
+			$('#message').html('Loser')
+			$('#message').show();
+			showBet()
+			showTotal()
+
+			
+
+		} 
+
+		
+
+		else {
+			$('#message').html('Push')
+			$('#message').show();
+			totalAmount = totalAmount + betAmount
+			showBet ()
+			showTotal()
+
+		}
+
 
 		// 1. If the player has > 21, player busts and loses.
 		// 2. If the dealer has > 21, dealer busts and loses.
