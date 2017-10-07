@@ -111,6 +111,7 @@ function showTotal(){
 		// Rules for the dealer:
 		// 1. If I have less than 17... I MUST hit
 		// 2. If I have 17 or more, I CANNOT hit (even if it means losing)
+		
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
 		while(dealersTotal < 17){
 			var topCard = theDeck.shift();
@@ -235,7 +236,7 @@ function showTotal(){
 			}
 
 			else {
-				
+
 			}
 			
 

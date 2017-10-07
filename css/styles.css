@@ -18,14 +18,17 @@ body {
 	box-shadow: 10px 10px 10px 10px;
 
 
-height: 500px;
+
+height: 550px;
   transform: rotateX(45deg);
+
 
 }
 
 .card{
-	height: 120px;
+	height: 160px;
 	width: auto;
+	text-align: center;
 /* 	background-color: transparent;
  */	/* padding: 10px; */
 	/* border: 2px solid #277714; */
@@ -34,9 +37,11 @@ height: 500px;
 }
 
 .card img{
-	max-height: 120px;
+	max-height: 160px;
 	width: auto;
 	margin: auto;
+	margin-left: -100px;
+	margin-top: -100px;
 		
 }
 
@@ -51,7 +56,7 @@ height: 500px;
 .dealer-position {
 	display: inline-block;
 	position: relative;
-	height: 120px;
+	height: 160px;
 	margin-bottom: 20px;
 }
 
@@ -61,18 +66,20 @@ height: 500px;
 	text-align: center;
 	font-size: 72px;
 	color: white;
+	float: right;
+	margin-top: -20px;
 		
 }
 #card {
 	display: inline-block;
 	position: absolute;
-	height: 120px;
+	height: 160px;
 	width: auto;
 	margin: 10px;
 
 }
 .placeholder {
-	height: 50px;
+	height: 0px;
 }
 
 .bet {
@@ -96,7 +103,6 @@ height: 500px;
 	margin: -90px;
 	margin-left: -40px;
 	color: white;
-background-image: url("./images/cards/chip.png")
 }
 
 .bet-button img {
