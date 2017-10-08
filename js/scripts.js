@@ -223,7 +223,7 @@ function showTotal(){
 			}
 			else if(handTotal.length ==2 && handTotal == 21){
 			$('#message').html('BLACKJACK')
-			totalAmount= totalAmount + (betAmount *3)
+			totalAmount= totalAmount + (betAmount *2.5)
 			$('#message').show();
 			showBet()
 			showTotal()
