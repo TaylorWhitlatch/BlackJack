@@ -22,13 +22,13 @@ body {
 
 
 height: 550px;
-  transform: rotateX(45deg);
+  transform: rotateX(55deg);
 
 
 }
 
 .card{
-	height: 160px;
+	height: 150px;
 	width: auto;
 	text-align: center;
 /* 	background-color: transparent;
@@ -39,7 +39,7 @@ height: 550px;
 }
 
 .card img{
-	max-height: 160px;
+	max-height: 150px;
 	width: auto;
 	margin: auto;
 	margin-left: -100px;
@@ -58,7 +58,7 @@ height: 550px;
 .dealer-position {
 	display: inline-block;
 	position: relative;
-	height: 160px;
+	height: 150px;
 	margin-bottom: 20px;
 }
 
@@ -75,7 +75,7 @@ height: 550px;
 #card {
 	display: inline-block;
 	position: absolute;
-	height: 160px;
+	height: 150px;
 	width: auto;
 	margin: 10px;
 
