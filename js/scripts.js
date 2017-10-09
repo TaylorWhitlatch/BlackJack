@@ -85,7 +85,7 @@ function showTotal(){
 		// arg1: entire hand
 		// arg2: who
 		calculateTotal(playersHand,'player')
-		calculateTotal(dealersHand,'dealer')
+		// calculateTotal(dealersHand,'dealer')
 
 	}})
 
@@ -221,10 +221,11 @@ function showTotal(){
 				thisCardsValue = 11
 				ifThereIsAnAce = true
 			}
-			else if(handTotal.length ==2 && handTotal == 21){
+			else if(handTotal.length == 2 && handTotal == 21){
 			$('#message').html('BLACKJACK')
 			totalAmount= totalAmount + (betAmount *2.5)
 			$('#message').show();
+			
 			showBet()
 			showTotal()
 			clearCards()
