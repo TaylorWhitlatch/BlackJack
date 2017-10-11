@@ -24,11 +24,15 @@ $(document).ready(function(){
 	// shuffleDeck();
 	 function clearCards (){
 	 for (let i = 2; i < 7; i++) {
+      $('.deal-button').prop('disabled',false);
+      $('.hit-button').prop('disabled',false);
+
+
       $(`.card-${i}`).html('');
       $("#card2").html(`<img src="./images/cardBack.png">`)
     }}
     betting = false;
-
+    $('.hit-button').prop('disabled',true);
 
 	function showBet(){
 	$("#bet-amount").html(`${betAmount}`)
@@ -39,7 +43,10 @@ function showTotal(){
 
 	$('.deal-button').click(()=>{
 		// We will create and shuffle a new deck
+		$('.bet-button').prop('disabled',false);
 		if(betting ==true){
+		
+
 		theDeck = freshDeck.slice();
 		theDeck = shuffleDeck(theDeck);
 		clearCards()		
@@ -86,7 +93,8 @@ function showTotal(){
 		// arg2: who
 		calculateTotal(playersHand,'player')
 		// calculateTotal(dealersHand,'dealer')
-
+		$('.bet-button').prop('disabled',true);
+		$('.hit-button').prop('disabled',false);
 	}})
 
 	$('.hit-button').click(()=>{
@@ -111,7 +119,8 @@ function showTotal(){
 		// Rules for the dealer:
 		// 1. If I have less than 17... I MUST hit
 		// 2. If I have 17 or more, I CANNOT hit (even if it means losing)
-		
+		$('.hit-button').prop('disabled',true);
+		$('.bet-button').prop('disabled',true);
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
 		while(dealersTotal < 17){
 			var topCard = theDeck.shift();
@@ -121,10 +130,12 @@ function showTotal(){
 
 		}
 		placeCard('dealer',2,dealersHand[1]);
+		$('.deal-button').prop('disabled',true);
 		checkWin();
+
 	})
 
-	$(".bet-button").click(()=>{
+	$('.bet-button').click(()=>{
 		betAmount += 1;
 		totalAmount -=1;
 		showBet()
@@ -139,7 +150,7 @@ function showTotal(){
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
 		
 		
-
+		$('.bet-button').prop('disabled',true);
 		if(playerTotal > dealersTotal){
 			$('#message').html('Winner')
 			totalAmount= totalAmount + (betAmount *2)
@@ -186,6 +197,10 @@ function showTotal(){
 			betAmount =0
 			showBet ()
 		}
+
+		  $('.deal-button').prop('disabled',false);
+      $('.bet-button').prop('disabled',false);
+      $('.bet-button').prop('disabled',true);
 
 
 		// 1. If the player has > 21, player busts and loses.
