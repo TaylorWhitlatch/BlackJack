@@ -36,15 +36,17 @@ $(document).ready(function(){
     $('.hit-button').prop('disabled',true);
     $('.stand-button').prop('disabled',true);
 	function showBet(){
-	$("#bet-amount").html(`${betAmount}`)
+	$("#bet-amount").html(` $${betAmount}`)
 }
 function showTotal(){
-	$("#total-amount").html(`${totalAmount}`)
+	$("#total-amount").html(`  $${totalAmount}`)
 }
 
 	$('.deal-button').click(()=>{
 		// We will create and shuffle a new deck
-		$('.bet-button').prop('disabled',false);
+		$('.betOne-button').prop('disabled',false);
+		$('.betFive-button').prop('disabled',false);
+		$('.betTen-button').prop('disabled',false);
 		if(betting ==true){
 		$('.stand-button').prop('disabled',false);
 
@@ -94,7 +96,9 @@ function showTotal(){
 		// arg2: who
 		calculateTotal(playersHand,'player')
 		// calculateTotal(dealersHand,'dealer')
-		$('.bet-button').prop('disabled',true);
+		$('.betOne-button').prop('disabled',true);
+		$('.betFive-button').prop('disabled',true);
+		$('.betTen-button').prop('disabled',true);
 		$('.hit-button').prop('disabled',false);
 	}})
 
@@ -121,7 +125,9 @@ function showTotal(){
 		// 1. If I have less than 17... I MUST hit
 		// 2. If I have 17 or more, I CANNOT hit (even if it means losing)
 		$('.hit-button').prop('disabled',true);
-		$('.bet-button').prop('disabled',true);
+		$('.betOne-button').prop('disabled',true);
+		$('.betFive-button').prop('disabled',true);
+		$('.betTen-button').prop('disabled',true);
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
 		while(dealersTotal < 17){
 			var topCard = theDeck.shift();
@@ -132,18 +138,42 @@ function showTotal(){
 		}
 		placeCard('dealer',2,dealersHand[1]);
 		$('.deal-button').prop('disabled',true);
+		$('.stand-button').prop('disabled',true);
 		checkWin();
 
 	})
 
-	$('.bet-button').click(()=>{
+	$('.betOne-button').click(()=>{
 		betAmount += 1;
 		totalAmount -=1;
 		showBet()
 		showTotal()
 		betting = true;
 
+
 	})
+
+	$('.betFive-button').click(()=>{
+		betAmount += 5;
+		totalAmount -=5;
+		showBet()
+		showTotal()
+		betting = true;
+
+
+	})
+
+	$('.betTen-button').click(()=>{
+		betAmount += 10;
+		totalAmount -=10;
+		showBet()
+		showTotal()
+		betting = true;
+
+
+	})
+
+
 
 	function checkWin(){
 		
@@ -151,7 +181,9 @@ function showTotal(){
 		var dealersTotal = calculateTotal(dealersHand,'dealer');
 		
 		
-		$('.bet-button').prop('disabled',true);
+		$('.betOne-button').prop('disabled',true);
+		$('.betFive-button').prop('disabled',true);
+		$('.betTen-button').prop('disabled',true);
 		if(playerTotal > dealersTotal){
 			$('#message').html('Winner')
 			totalAmount= totalAmount + (betAmount *2)
@@ -200,7 +232,9 @@ function showTotal(){
 		}
 
 		  $('.deal-button').prop('disabled',false);
-      $('.bet-button').prop('disabled',false);
+      $('.betOne-button').prop('disabled',false);
+      $('.betFive-button').prop('disabled',false);
+      $('.betTen-button').prop('disabled',false);
       $('.hit-button').prop('disabled',true);
 
 
