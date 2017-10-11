@@ -201,7 +201,7 @@ function showTotal(){
 
 		  $('.deal-button').prop('disabled',false);
       $('.bet-button').prop('disabled',false);
-      $('.bet-button').prop('disabled',true);
+      $('.hit-button').prop('disabled',true);
 
 
 		// 1. If the player has > 21, player busts and loses.
