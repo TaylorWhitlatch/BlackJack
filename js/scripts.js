@@ -28,12 +28,13 @@ $(document).ready(function(){
       $('.hit-button').prop('disabled',false);
 
 
+
       $(`.card-${i}`).html('');
       $("#card2").html(`<img src="./images/cardBack.png">`)
     }}
     betting = false;
     $('.hit-button').prop('disabled',true);
-
+    $('.stand-button').prop('disabled',true);
 	function showBet(){
 	$("#bet-amount").html(`${betAmount}`)
 }
@@ -45,7 +46,7 @@ function showTotal(){
 		// We will create and shuffle a new deck
 		$('.bet-button').prop('disabled',false);
 		if(betting ==true){
-		
+		$('.stand-button').prop('disabled',false);
 
 		theDeck = freshDeck.slice();
 		theDeck = shuffleDeck(theDeck);
